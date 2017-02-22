@@ -1,0 +1,104 @@
+<html>
+<head>
+	<title> WEBAPDE Currency Converter </title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.2-dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="jquery-1.11.2-dist/jquery.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	
+	<script>
+		var cartList = [];
+		var amountList = [];
+		var totalAmount = [];
+		var total;
+		var i = 0;
+
+		function appendToShoppingCart(quantity, itemName, total) {
+			var str = "<li class=\"list-group-item\">" + quantity + "\t" + itemName + "\t" + total + "</li>";
+			$("#shopping-cart").append(str);
+		}
+
+		function setTotal(total) {
+			$("#total-amount").html("<p id=\"total-amount\">" + "Total: " + total + "</p>");
+		}
+
+		function addItem(){
+				var inputAmount = document.getElementById('item-quantity').value;
+				inputAmount = Number(inputAmount);
+
+				var itemIndex = document.getElementById('itemList').selectedIndex;
+				var currItem = document.getElementsByTagName("option")[itemIndex].value;
+
+				cartList[i] = currItem;
+				amountList[i] = inputAmount;
+
+				if(currItem == 'apple')
+					totalAmount[i] = inputAmount * 20;
+				else if(currItem == 'orange')
+					totalAmount[i] = inputAmount * 10;
+				else if(currItem == 'banana')
+					totalAmount[i] = inputAmount * 30;
+
+				appendToShoppingCart(amountList[i], cartList[i], totalAmount[i]);
+
+				i++;
+
+				$("#total-amount").html("");
+		}
+
+		function checkOut(){
+				var j = 0;
+				total = 0;
+
+				for(j = 0; j < cartList.length; j++)
+					total = total + totalAmount[j];
+
+				setTotal(total);
+		}
+		
+		setTotal(250);
+	</script>
+</head>
+
+<body>
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-12">
+				<form class="form-inline" role="form">
+					
+					<div class="form-group">
+						<select class="form-control" id="itemList">
+							<option value = 'apple'>Apple (20/piece)</option>
+							<option value = 'orange'>Orange (10/piece)</option>
+							<option value = 'banana'>Banana (30/piece)</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<input type="number" class="form-control" id="item-quantity">
+					</div>
+
+					<button type="button" class="btn btn-default" id="add-to-cart-btn" onclick="addItem();">Add to Cart</button>
+					<button type="button" class="btn btn-default" id="check-out-btn" onclick="checkOut();">Check Out</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-group" id="shopping-cart">
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<p id="total-amount"></p>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

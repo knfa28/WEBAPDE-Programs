@@ -1,0 +1,129 @@
+<html>
+	<head>
+		<title>Currency Converter</title>
+		<script>
+			function convert(){
+				var inputCurrency = document.getElementById('before').value;
+				inputCurrency = Number(inputCurrency);
+
+				var fromIndex = document.getElementById('fromList').selectedIndex;
+				var toIndex = document.getElementById('toList').selectedIndex;
+
+				var fromCurr = document.getElementsByTagName("option")[fromIndex].value;
+				var toCurr = document.getElementsByTagName("option")[toIndex].value;
+
+				var multiplier;
+				var output;
+				
+				if(fromCurr == 'USD'){
+					if(toCurr == 'PHP')
+						multiplier = 44.46;
+					else if(toCurr == 'CAD')
+						multiplier = 1.26;
+					else if(toCurr == 'GBP')
+						multiplier = 0.66;
+					else if(toCurr == 'SAR')
+						multiplier = 7.75;
+					else multiplier = 1;
+				}
+
+				if(fromCurr == 'PHP'){
+					if(toCurr == 'USD')
+						multiplier = 0.022;
+					else if(toCurr == 'CAD')
+						multiplier = 0.028;
+					else if(toCurr == 'GBP')
+						multiplier = 0.015;
+					else if(toCurr == 'SAR')
+						multiplier = 0.084;
+					else multiplier = 1;
+				}
+
+				if(fromCurr == 'CAD'){
+					if(toCurr == 'USD')
+						multiplier = 0.79;
+					else if(toCurr == 'PHP')
+						multiplier = 35.17;
+					else if(toCurr == 'GBP')
+						multiplier = 0.52;
+					else if(toCurr == 'SAR')
+						multiplier = 2.97;
+					else multiplier = 1;
+				}
+
+				if(fromCurr == 'GBP'){
+					if(toCurr == 'USD')
+						multiplier = 1.54;
+					else if(toCurr == 'PHP')
+						multiplier = 68.12;
+					else if(toCurr == 'CAD')
+						multiplier = 1.93;
+					else if(toCurr == 'SAR')
+						multiplier = 5.77;
+					else multiplier = 1;
+				}
+
+				if(fromCurr == 'SAR'){
+					if(toCurr == 'USD')
+						multiplier = 0.27;
+					else if(toCurr == 'PHP')
+						multiplier = 11.82;
+					else if(toCurr == 'CAD')
+						multiplier = 0.33;
+					else if(toCurr == 'GBP')
+						multiplier = 0.17;
+					else multiplier = 1;
+				}
+
+				output = inputCurrency * multiplier;
+				document.getElementById('after').value = output;
+			}
+		</script>
+	</head>
+
+	<body>
+		<div>
+			Input Amount <br>
+			<input type = "text" id = "before"/>
+		</div>
+
+		<br>
+
+		<div id="currency">
+			<select id = "fromList">
+				<option value = 'USD'>USD</option>
+				<option value = 'PHP'>PHP</option>
+				<option value = 'CAD'>CAD</option>
+				<option value = 'GBP'>GBP</option>
+				<option value = 'SAR'>SAR</option>
+			</select>
+			From
+
+			<br>
+			
+			<select id = "toList">
+				<option value = 'USD'>USD</option>
+				<option value = 'PHP'>PHP</option>
+				<option value = 'CAD'>CAD</option>
+				<option value = 'GBP'>GBP</option>
+				<option value = 'SAR'>SAR</option>
+			</select>
+			To 
+		</div>
+
+		<br>
+
+		<div>
+			<button onclick = "convert();">
+				Convert
+			</button>
+		</div>
+
+		<br>
+		
+		<div>
+			Coverted Amount <br>
+			<input type = "text" id = "after"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+html,body,.container-fluid{
+	height: 100%;
+	background-color: white;
+}
+
+
+#main {
+	min-height: 92%;
+	overflow: hidden;
+}
+
+#menu, #content {
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;
+}
+
+#content {
+	
+	text-align: center;
+	padding-top: 70px;
+	padding-left: 30px;
+}
+
+#logo {
+	width: 269px;
+}
+
+#search-box {
+	width: 600px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(0,0,0,0.15);
+	opacity: 0.8%;
+ padding-left: 20px;
+}
+
+#input-box {
+	width: 524px;
+	opacity: 1%;
+}
+
+#input-box:hover {
+	border-color: rgba(0,0,0,3);
+	opacity: 0.8%;
+}
+
+#input-box:active {
+	border-color: rgb(66,133,244);
+}
+
+#mic-icon {
+	display: inline-block;
+	width: 17px;
+	height: 23px;
+}
+
+#search-box button {
+	background-color: rgb(243, 243, 243);
+	border-width: 1px;
+	border-style: solid;
+	border-color:  rgba(0,0,0,0.098);
+	color: rgb(68,68,68);
+	font-weight: bold;
+	font-size: 11px;
+	font-family: arial, serif;
+}
+
+#search-box button:hover {
+	border-color: rgb(0,0,0,0.1);
+}
+
+
